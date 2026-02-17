@@ -716,6 +716,8 @@
 <li><strong>Fields</strong>:<ul>
 <li><code>username</code> (String, Index, Unique per Tenant)</li>
 <li><code>email</code> (String, Index, Unique per Tenant)</li>
+<li><code>first_name</code> (String)</li>
+<li><code>last_name</code> (String)</li>
 <li><code>hashed_password</code> (String)</li>
 <li><code>role</code> (Enum: <code>SUPER_ADMIN</code>, <code>TENANT_ADMIN</code>, <code>MANAGER</code>, <code>GUEST</code>, Default: <code>GUEST</code>)</li>
 <li><code>tenant</code> (FK → Tenant, Nullable)</li>
@@ -987,6 +989,8 @@ erDiagram
         varchar username "unique per tenant"
         varchar email "unique per tenant"
         varchar hashed_password
+        varchar first_name
+        varchar last_name
         int token_version
         bool is_active
         bool is_verified
