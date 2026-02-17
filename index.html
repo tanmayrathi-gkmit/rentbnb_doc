@@ -1,0 +1,886 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="modules/">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>RentBnB System Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.e53b48f4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rentbnb-multi-tenant-property-rental-management-system" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="RentBnB System Documentation" class="md-header__button md-logo" aria-label="RentBnB System Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RentBnB System Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Overview
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="modules/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Modules
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="permissions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Permissions
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="RentBnB System Documentation" class="md-nav__button md-logo" aria-label="RentBnB System Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RentBnB System Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication &amp; Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#property-amenity-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Property &amp; Amenity Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#booking-payment-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Booking &amp; Payment System
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reviews-ratings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reviews &amp; Ratings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messaging-real-time-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Messaging &amp; Real-time Communication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dashboard-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dashboard &amp; Analytics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#background-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caching &amp; Storage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tech-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tech Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-security_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication &amp; Security
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication &amp; Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Roles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication Methods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Permissions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication &amp; Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#property-amenity-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Property &amp; Amenity Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#booking-payment-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Booking &amp; Payment System
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reviews-ratings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reviews &amp; Ratings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messaging-real-time-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Messaging &amp; Real-time Communication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dashboard-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dashboard &amp; Analytics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#background-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caching &amp; Storage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tech-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tech Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-security_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication &amp; Security
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication &amp; Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Roles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication Methods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="rentbnb-multi-tenant-property-rental-management-system">RentBnB - Multi-Tenant Property Rental Management System<a class="headerlink" href="#rentbnb-multi-tenant-property-rental-management-system" title="Permanent link">&para;</a></h1>
+<p>A modern, scalable backend for a property rental management platform built with FastAPI, PostgreSQL, and Redis.</p>
+<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
+<h3 id="core-architecture">Core Architecture<a class="headerlink" href="#core-architecture" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Multi-Tenant Architecture</strong>: Complete tenant isolation with role-based access control and tenant-scoped data</li>
+<li><strong>Role-Based Access Control</strong>: Support for SUPER_ADMIN, TENANT_ADMIN, MANAGER, and GUEST roles</li>
+<li><strong>Async Operations</strong>: Full async/await support for high performance</li>
+<li><strong>Database Migrations</strong>: Automated schema versioning with Alembic</li>
+<li><strong>Exception Handling</strong>: Comprehensive error handling and validation with custom exception handlers</li>
+<li><strong>CORS Support</strong>: Configured for frontend integration</li>
+</ul>
+<h3 id="authentication-security">Authentication &amp; Security<a class="headerlink" href="#authentication-security" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>JWT Authentication</strong>: Token-based authentication with access and refresh tokens</li>
+<li><strong>Passwordless OTP</strong>: One-time password login sent via email</li>
+<li><strong>Email Verification</strong>: Automated email-based account verification</li>
+<li><strong>Password Management</strong>: Secure password hashing with bcrypt, forgot password/reset flow</li>
+<li><strong>Token Management</strong>: Automatic token cleanup via scheduled tasks (every 6 hours)</li>
+<li><strong>Soft Delete Pattern</strong>: Data retention with soft-delete for users, tenants, and other entities</li>
+</ul>
+<h3 id="property-amenity-management">Property &amp; Amenity Management<a class="headerlink" href="#property-amenity-management" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Property Management</strong>: Complete CRUD operations for properties with multi-image support</li>
+<li><strong>Property Images</strong>: Secure image uploads with UUID filenames and static file serving</li>
+<li><strong>Amenity System</strong>: Manage property amenities with tenant-specific amenity catalogs</li>
+<li><strong>Property Categories</strong>: Support for APARTMENT, HOUSE, VILLA, CONDO, etc.</li>
+<li><strong>Availability Tracking</strong>: Real-time property availability checks</li>
+</ul>
+<h3 id="booking-payment-system">Booking &amp; Payment System<a class="headerlink" href="#booking-payment-system" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Booking System</strong>: Full booking lifecycle management with status tracking (PENDING, CONFIRMED, CANCELLED, COMPLETED)</li>
+<li><strong>Availability Checks</strong>: Prevent double-bookings with date range validation</li>
+<li><strong>Payment Integration</strong>: Razorpay payment gateway with order creation and verification</li>
+<li><strong>Refund Processing</strong>: Automated refund handling via Celery tasks</li>
+<li><strong>Payment Webhooks</strong>: Real-time payment status updates via Razorpay webhooks</li>
+<li><strong>Payment Reconciliation</strong>: Scheduled task to reconcile pending payments (every 2 minutes)</li>
+</ul>
+<h3 id="reviews-ratings">Reviews &amp; Ratings<a class="headerlink" href="#reviews-ratings" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Review System</strong>: Guests can review properties after completed bookings</li>
+<li><strong>Rating Management</strong>: 1-5 star ratings with review text</li>
+<li><strong>Review Validation</strong>: Ensures only guests with completed bookings can review</li>
+<li><strong>Tenant Isolation</strong>: Reviews are tenant-scoped</li>
+</ul>
+<h3 id="messaging-real-time-communication">Messaging &amp; Real-time Communication<a class="headerlink" href="#messaging-real-time-communication" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>WebSocket Support</strong>: Real-time bidirectional communication</li>
+<li><strong>Message System</strong>: Persistent message storage with sender/receiver tracking</li>
+<li><strong>Message Types</strong>: Support for TEXT, IMAGE, FILE message types</li>
+<li><strong>Real-time Notifications</strong>: Instant message delivery via WebSockets</li>
+</ul>
+<h3 id="dashboard-analytics">Dashboard &amp; Analytics<a class="headerlink" href="#dashboard-analytics" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Tenant Dashboard</strong>: Metrics for tenant admins (total properties, bookings, revenue, occupancy rate)</li>
+<li><strong>Platform Dashboard</strong>: System-wide metrics for super admins (total tenants, users, properties, bookings, revenue)</li>
+<li><strong>Date Range Filtering</strong>: Dashboard metrics support custom date ranges</li>
+<li><strong>Performance Optimized</strong>: Database indexes for efficient metric aggregation</li>
+</ul>
+<h3 id="background-processing">Background Processing<a class="headerlink" href="#background-processing" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Celery Worker</strong>: Asynchronous task processing for emails, refunds, and bookings</li>
+<li><strong>Celery Beat</strong>: Scheduled tasks for payment reconciliation and token cleanup</li>
+<li><strong>Email Tasks</strong>: Async email sending for verification, password reset, and notifications</li>
+<li><strong>Booking Tasks</strong>: Automated booking expiration handling</li>
+<li><strong>Payment Tasks</strong>: Refund processing and payment reconciliation</li>
+</ul>
+<h3 id="caching-storage">Caching &amp; Storage<a class="headerlink" href="#caching-storage" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Redis Integration</strong>: Caching for OTP, verification tokens, and session data</li>
+<li><strong>Static File Serving</strong>: Dedicated endpoints for uploaded images and static assets</li>
+<li><strong>File Upload Handling</strong>: Secure multipart file uploads with validation</li>
+</ul>
+<h2 id="tech-stack">Tech Stack<a class="headerlink" href="#tech-stack" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Framework</strong>: FastAPI 0.128+</li>
+<li><strong>Database</strong>: PostgreSQL with async support (asyncpg)</li>
+<li><strong>Cache</strong>: Redis 7.1+</li>
+<li><strong>Task Queue</strong>: Celery 5.3+</li>
+<li><strong>Payment Gateway</strong>: Razorpay</li>
+<li><strong>Authentication</strong>: JWT with bcrypt password hashing</li>
+<li><strong>ORM</strong>: SQLAlchemy 2.0+</li>
+<li><strong>Migrations</strong>: Alembic 1.18+</li>
+<li><strong>Email</strong>: aiosmtplib for async email</li>
+<li><strong>Python</strong>: 3.13+</li>
+</ul>
+<h2 id="authentication-security_1">Authentication &amp; Security<a class="headerlink" href="#authentication-security_1" title="Permanent link">&para;</a></h2>
+<h3 id="user-roles">User Roles<a class="headerlink" href="#user-roles" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>SUPER_ADMIN</strong>: Can manage all tenants and users system-wide</li>
+<li><strong>TENANT_ADMIN</strong>: Manages their tenant and its users</li>
+<li><strong>MANAGER</strong>: Works within their tenant (limited permissions)</li>
+<li><strong>GUEST</strong>: View-only access within tenant</li>
+</ul>
+<h3 id="authentication-methods">Authentication Methods<a class="headerlink" href="#authentication-methods" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Email &amp; Password</strong>: Traditional login with JWT tokens</li>
+<li><strong>Passwordless OTP</strong>: One-time password sent to email</li>
+<li><strong>Token Refresh</strong>: Long-lived refresh tokens for extended sessions</li>
+<li><strong>Email Verification</strong>: Required for new accounts</li>
+<li><strong>Password Reset</strong>: Secure password reset via email token</li>
+</ul>
+<h3 id="security-features">Security Features<a class="headerlink" href="#security-features" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Bcrypt password hashing</li>
+<li>JWT token-based authentication</li>
+<li>Soft-delete pattern for data retention</li>
+<li>Token blacklisting on logout</li>
+<li>Case-insensitive email/username lookups</li>
+<li>Role-based access control (RBAC)</li>
+<li>Multi-tenant isolation at database level</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
