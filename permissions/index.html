@@ -412,15 +412,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#payment-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      Payment Management
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#review-management" class="md-nav__link">
     <span class="md-ellipsis">
       Review Management
@@ -550,15 +541,6 @@
   <a href="#booking-management" class="md-nav__link">
     <span class="md-ellipsis">
       Booking Management
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#payment-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      Payment Management
     </span>
   </a>
   
@@ -724,7 +706,7 @@
 <tr>
 <td>View User Profile (Others)</td>
 <td>Yes (Global)</td>
-<td>Yes (Tenant)</td>
+<td>No</td>
 <td>No</td>
 <td>No</td>
 </tr>
@@ -738,7 +720,7 @@
 <tr>
 <td>Update User (Others)</td>
 <td>Yes (Global)</td>
-<td>Yes (Tenant)</td>
+<td>No</td>
 <td>No</td>
 <td>No</td>
 </tr>
@@ -747,19 +729,19 @@
 <td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
-<td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td>Delete User (Others)</td>
 <td>Yes (Global)</td>
-<td>Yes (Tenant)</td>
+<td>No</td>
 <td>No</td>
 <td>No</td>
 </tr>
 <tr>
 <td>Change User Role</td>
-<td>Yes (Global)</td>
-<td>Yes (Tenant)</td>
+<td>No</td>
+<td>No</td>
 <td>No</td>
 <td>No</td>
 </tr>
@@ -803,28 +785,28 @@
 <td>Update Property</td>
 <td>No</td>
 <td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
+<td>Yes (Own)</td>
 <td>No</td>
 </tr>
 <tr>
 <td>Delete Property</td>
 <td>No</td>
 <td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
+<td>Yes (Own)</td>
 <td>No</td>
 </tr>
 <tr>
 <td>Upload Property Images</td>
 <td>No</td>
 <td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
+<td>Yes (Own)</td>
 <td>No</td>
 </tr>
 <tr>
 <td>Delete Property Images</td>
 <td>No</td>
 <td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
+<td>Yes (Own)</td>
 <td>No</td>
 </tr>
 </tbody>
@@ -901,15 +883,15 @@
 <tr>
 <td>Create Booking</td>
 <td>No</td>
-<td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
+<td>No</td>
+<td>No</td>
 <td>Yes (Tenant)</td>
 </tr>
 <tr>
 <td>List All Bookings</td>
 <td>No</td>
 <td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
+<td>Yes (Own)</td>
 <td>No</td>
 </tr>
 <tr>
@@ -923,94 +905,20 @@
 <td>View Booking Details</td>
 <td>No</td>
 <td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
 <td>Yes (Own)</td>
-</tr>
-<tr>
-<td>Update Booking</td>
-<td>No</td>
-<td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
 <td>Yes (Own)</td>
 </tr>
 <tr>
 <td>Cancel Booking</td>
 <td>No</td>
 <td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
 <td>Yes (Own)</td>
-</tr>
-<tr>
-<td>Confirm Booking</td>
-<td>No</td>
-<td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
-<td>No</td>
+<td>Yes (Own)</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
 <p><strong>Note</strong>: SUPER_ADMIN does not have access to booking management. This is tenant-scoped functionality.</p>
-</blockquote>
-<hr />
-<h2 id="payment-management">Payment Management<a class="headerlink" href="#payment-management" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Operation</th>
-<th>SUPER_ADMIN</th>
-<th>TENANT_ADMIN</th>
-<th>MANAGER</th>
-<th>GUEST</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Create Payment Order</td>
-<td>No</td>
-<td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
-</tr>
-<tr>
-<td>Verify Payment</td>
-<td>No</td>
-<td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
-</tr>
-<tr>
-<td>List All Payments</td>
-<td>No</td>
-<td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
-<td>No</td>
-</tr>
-<tr>
-<td>List Own Payments</td>
-<td>No</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>View Payment Details</td>
-<td>No</td>
-<td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
-<td>Yes (Own)</td>
-</tr>
-<tr>
-<td>Process Refund</td>
-<td>No</td>
-<td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><strong>Note</strong>: SUPER_ADMIN does not have access to payment management. This is tenant-scoped functionality.</p>
 </blockquote>
 <hr />
 <h2 id="review-management">Review Management<a class="headerlink" href="#review-management" title="Permanent link">&para;</a></h2>
@@ -1087,8 +995,8 @@
 <td>Send Message</td>
 <td>No</td>
 <td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
-<td>Yes (Tenant)</td>
+<td>Yes (Own)</td>
+<td>Yes (Own)</td>
 </tr>
 <tr>
 <td>List All Messages</td>
@@ -1121,7 +1029,7 @@
 </tbody>
 </table>
 <blockquote>
-<p><strong>Note</strong>: SUPER_ADMIN does not have access to messaging. This is tenant-scoped functionality.</p>
+<p><strong>Note</strong>: SUPER_ADMIN does not have access to messaging. This is tenant-scoped functionality. Messages are booking bound.</p>
 </blockquote>
 <hr />
 <h2 id="dashboard-analytics">Dashboard &amp; Analytics<a class="headerlink" href="#dashboard-analytics" title="Permanent link">&para;</a></h2>
@@ -1138,7 +1046,7 @@
 <tbody>
 <tr>
 <td>View Tenant Dashboard</td>
-<td>Yes (Tenant)</td>
+<td>No</td>
 <td>Yes (Tenant)</td>
 <td>No</td>
 <td>No</td>
@@ -1176,27 +1084,30 @@
 <tbody>
 <tr>
 <td>Connect to WebSocket</td>
-<td>Yes</td>
+<td>No</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
 </tr>
 <tr>
 <td>Send Real-time Messages</td>
-<td>Yes (Tenant)</td>
+<td>No</td>
 <td>Yes (Tenant)</td>
 <td>Yes (Tenant)</td>
 <td>Yes (Tenant)</td>
 </tr>
 <tr>
 <td>Receive Real-time Messages</td>
-<td>Yes (Own)</td>
+<td>No</td>
 <td>Yes (Own)</td>
 <td>Yes (Own)</td>
 <td>Yes (Own)</td>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p><strong>Note</strong>: SUPER_ADMIN does not have access to WebSocket. This is tenant-scoped functionality. WebSocket are booking bound.</p>
+</blockquote>
 <hr />
 <h2 id="key-permission-principles">Key Permission Principles<a class="headerlink" href="#key-permission-principles" title="Permanent link">&para;</a></h2>
 <ol>

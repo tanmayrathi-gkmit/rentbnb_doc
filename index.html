@@ -715,7 +715,6 @@
 <li><strong>Async Operations</strong>: Full async/await support for high performance</li>
 <li><strong>Database Migrations</strong>: Automated schema versioning with Alembic</li>
 <li><strong>Exception Handling</strong>: Comprehensive error handling and validation with custom exception handlers</li>
-<li><strong>CORS Support</strong>: Configured for frontend integration</li>
 </ul>
 <h3 id="authentication-security">Authentication &amp; Security<a class="headerlink" href="#authentication-security" title="Permanent link">&para;</a></h3>
 <ul>
@@ -754,16 +753,14 @@
 <h3 id="messaging-real-time-communication">Messaging &amp; Real-time Communication<a class="headerlink" href="#messaging-real-time-communication" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>WebSocket Support</strong>: Real-time bidirectional communication</li>
-<li><strong>Message System</strong>: Persistent message storage with sender/receiver tracking</li>
-<li><strong>Message Types</strong>: Support for TEXT, IMAGE, FILE message types</li>
-<li><strong>Real-time Notifications</strong>: Instant message delivery via WebSockets</li>
+<li><strong>Message System</strong>: Persistent message storage</li>
+<li><strong>Real-time Chat</strong>: Instant message delivery via WebSockets</li>
 </ul>
 <h3 id="dashboard-analytics">Dashboard &amp; Analytics<a class="headerlink" href="#dashboard-analytics" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Tenant Dashboard</strong>: Metrics for tenant admins (total properties, bookings, revenue, occupancy rate)</li>
 <li><strong>Platform Dashboard</strong>: System-wide metrics for super admins (total tenants, users, properties, bookings, revenue)</li>
 <li><strong>Date Range Filtering</strong>: Dashboard metrics support custom date ranges</li>
-<li><strong>Performance Optimized</strong>: Database indexes for efficient metric aggregation</li>
 </ul>
 <h3 id="background-processing">Background Processing<a class="headerlink" href="#background-processing" title="Permanent link">&para;</a></h3>
 <ul>
@@ -775,7 +772,7 @@
 </ul>
 <h3 id="caching-storage">Caching &amp; Storage<a class="headerlink" href="#caching-storage" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Redis Integration</strong>: Caching for OTP, verification tokens, and session data</li>
+<li><strong>Redis Integration</strong>: Caching for OTP, verification tokens, and rate limiting</li>
 <li><strong>Static File Serving</strong>: Dedicated endpoints for uploaded images and static assets</li>
 <li><strong>File Upload Handling</strong>: Secure multipart file uploads with validation</li>
 </ul>
@@ -803,7 +800,7 @@
 <h3 id="authentication-methods">Authentication Methods<a class="headerlink" href="#authentication-methods" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Email &amp; Password</strong>: Traditional login with JWT tokens</li>
-<li><strong>Passwordless OTP</strong>: One-time password sent to email</li>
+<li><strong>Passwordless OTP</strong>: One-time otp sent to email</li>
 <li><strong>Token Refresh</strong>: Long-lived refresh tokens for extended sessions</li>
 <li><strong>Email Verification</strong>: Required for new accounts</li>
 <li><strong>Password Reset</strong>: Secure password reset via email token</li>
