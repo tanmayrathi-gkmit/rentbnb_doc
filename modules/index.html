@@ -338,6 +338,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#er-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      ER Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#module-breakdown" class="md-nav__link">
     <span class="md-ellipsis">
       Module Breakdown
@@ -472,15 +481,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#er-diagram" class="md-nav__link">
-    <span class="md-ellipsis">
-      ER Diagram
-    </span>
-  </a>
   
 </li>
       
@@ -543,6 +543,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#er-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      ER Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#module-breakdown" class="md-nav__link">
     <span class="md-ellipsis">
       Module Breakdown
@@ -680,15 +689,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#er-diagram" class="md-nav__link">
-    <span class="md-ellipsis">
-      ER Diagram
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -708,6 +708,194 @@
 
 
 <h1 id="system-modules">System Modules<a class="headerlink" href="#system-modules" title="Permanent link">&para;</a></h1>
+<h2 id="er-diagram">ER Diagram<a class="headerlink" href="#er-diagram" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>---
+config:
+  layout: elk
+---
+erDiagram
+
+    tenants ||--o{ users : has
+    tenants ||--o{ properties : owns
+    tenants ||--o{ bookings : has
+    tenants ||--o{ payments : has
+    tenants ||--o{ reviews : has
+    tenants ||--o{ messages : has
+    tenants ||--o{ webhooks : has
+
+    users ||--o{ properties : manages
+    users ||--o{ bookings : "guest booking"
+    users ||--o{ bookings : "property manager"
+    users ||--o{ messages : sends
+    users ||--o{ reviews : writes
+    users ||--o{ blacklisted_tokens : owns
+
+    properties ||--o{ property_images : has
+    properties ||--o{ property_amenities : has
+    properties ||--o{ bookings : booked
+    properties ||--o{ reviews : reviewed
+
+    amenities ||--o{ property_amenities : linked
+
+    bookings ||--o{ payments : has
+    bookings ||--o{ messages : chat
+    bookings ||--o| reviews : "reviewed by"
+
+
+    tenants {
+        uuid id PK
+        varchar name "unique"
+        enum status "INACTIVE/ACTIVE"
+        datetime created_at
+        datetime updated_at
+        bool is_deleted
+        datetime deleted_at
+    }
+
+    users {
+        uuid id PK
+        uuid tenant_id FK "null for superadmin"
+        enum role "GUEST/MANAGER/TENANT_ADMIN/SUPER_ADMIN"
+        varchar username "unique per tenant"
+        varchar email "unique per tenant"
+        varchar hashed_password
+        varchar first_name
+        varchar last_name
+        int token_version
+        bool is_active
+        bool is_verified
+        datetime created_at
+        datetime updated_at
+        bool is_deleted
+        datetime deleted_at
+    }
+
+    properties {
+        uuid id PK
+        uuid tenant_id FK
+        uuid managed_by FK
+        varchar name
+        text description
+        varchar address
+        varchar city
+        varchar state
+        varchar country
+        varchar zipcode
+        numeric latitude "10,6"
+        numeric longitude "10,6"
+        enum category "APARTMENT/HOUSE/VILLA/CONDO/etc"
+        int bedrooms
+        int max_guests
+        numeric price_per_night "10,2"
+        bool is_active
+        numeric rating "3,2"
+        int review_count
+        datetime created_at
+        datetime updated_at
+        bool is_deleted
+        datetime deleted_at
+    }
+
+    property_images {
+        uuid id PK
+        uuid property_id FK
+        varchar url
+        datetime created_at
+        datetime updated_at
+    }
+
+    amenities {
+        uuid id PK
+        varchar name "unique when active"
+        datetime created_at
+        datetime updated_at
+        bool is_deleted
+        datetime deleted_at
+    }
+
+    property_amenities {
+        uuid id PK
+        uuid property_id FK
+        uuid amenity_id FK
+        datetime created_at
+        datetime updated_at
+    }
+
+    bookings {
+        uuid id PK
+        uuid tenant_id FK
+        uuid property_id FK
+        uuid guest_id FK
+        uuid property_manager_id FK
+        enum status "PENDING/CONFIRMED/CANCELLED/COMPLETED/FAILED"
+        date check_in
+        date check_out
+        numeric base_amount "10,2"
+        numeric commission_amount "10,2"
+        numeric total_amount "10,2"
+        datetime cancelled_at
+        datetime expires_at
+        datetime created_at
+        datetime updated_at
+    }
+
+    payments {
+        uuid id PK
+        uuid tenant_id FK
+        uuid booking_id FK
+        uuid guest_id FK
+        enum status "PENDING/PAID/FAILED/REFUNDED"
+        numeric amount "10,2"
+        varchar currency "default INR"
+        varchar razorpay_order_id "unique"
+        varchar razorpay_payment_id
+        varchar razorpay_signature
+        datetime created_at
+        datetime updated_at
+    }
+
+    reviews {
+        uuid id PK
+        uuid tenant_id FK
+        uuid booking_id FK "unique"
+        uuid property_id FK
+        uuid guest_id FK
+        int rating "1-5"
+        text comment
+        datetime created_at
+        datetime updated_at
+    }
+
+    messages {
+        uuid id PK
+        uuid tenant_id FK
+        uuid booking_id FK
+        uuid sender_id FK "null for system messages"
+        text content
+        enum message_type "USER_MESSAGE/SYSTEM_MESSAGE/etc"
+        datetime created_at
+        datetime updated_at
+    }
+
+    webhooks {
+        uuid id PK
+        uuid tenant_id FK "nullable"
+        varchar event_type
+        json payload
+        varchar razorpay_event_id "unique"
+        bool processed
+        datetime created_at
+        datetime updated_at
+    }
+
+    blacklisted_tokens {
+        uuid id PK
+        uuid user_id FK
+        varchar jti "unique"
+        datetime expires_at
+        datetime created_at
+        datetime updated_at
+    }</code></pre>
 <h2 id="module-breakdown">Module Breakdown<a class="headerlink" href="#module-breakdown" title="Permanent link">&para;</a></h2>
 <h2 id="users-module">Users Module<a class="headerlink" href="#users-module" title="Permanent link">&para;</a></h2>
 <p><strong>User</strong></p>
@@ -938,194 +1126,6 @@
 <li><code>payments</code>: <code>amount &gt;= 0</code></li>
 <li><code>reviews</code>: <code>rating &gt;= 1 AND rating &lt;= 5</code></li>
 </ul>
-<h2 id="er-diagram">ER Diagram<a class="headerlink" href="#er-diagram" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>---
-config:
-  layout: elk
----
-erDiagram
-
-    tenants ||--o{ users : has
-    tenants ||--o{ properties : owns
-    tenants ||--o{ bookings : has
-    tenants ||--o{ payments : has
-    tenants ||--o{ reviews : has
-    tenants ||--o{ messages : has
-    tenants ||--o{ webhooks : has
-
-    users ||--o{ properties : manages
-    users ||--o{ bookings : "guest booking"
-    users ||--o{ bookings : "property manager"
-    users ||--o{ messages : sends
-    users ||--o{ reviews : writes
-    users ||--o{ blacklisted_tokens : owns
-
-    properties ||--o{ property_images : has
-    properties ||--o{ property_amenities : has
-    properties ||--o{ bookings : booked
-    properties ||--o{ reviews : reviewed
-
-    amenities ||--o{ property_amenities : linked
-
-    bookings ||--o{ payments : has
-    bookings ||--o{ messages : chat
-    bookings ||--o| reviews : "reviewed by"
-
-
-    tenants {
-        uuid id PK
-        varchar name "unique"
-        enum status "INACTIVE/ACTIVE"
-        datetime created_at
-        datetime updated_at
-        bool is_deleted
-        datetime deleted_at
-    }
-
-    users {
-        uuid id PK
-        uuid tenant_id FK "null for superadmin"
-        enum role "GUEST/MANAGER/TENANT_ADMIN/SUPER_ADMIN"
-        varchar username "unique per tenant"
-        varchar email "unique per tenant"
-        varchar hashed_password
-        varchar first_name
-        varchar last_name
-        int token_version
-        bool is_active
-        bool is_verified
-        datetime created_at
-        datetime updated_at
-        bool is_deleted
-        datetime deleted_at
-    }
-
-    properties {
-        uuid id PK
-        uuid tenant_id FK
-        uuid managed_by FK
-        varchar name
-        text description
-        varchar address
-        varchar city
-        varchar state
-        varchar country
-        varchar zipcode
-        numeric latitude "10,6"
-        numeric longitude "10,6"
-        enum category "APARTMENT/HOUSE/VILLA/CONDO/etc"
-        int bedrooms
-        int max_guests
-        numeric price_per_night "10,2"
-        bool is_active
-        numeric rating "3,2"
-        int review_count
-        datetime created_at
-        datetime updated_at
-        bool is_deleted
-        datetime deleted_at
-    }
-
-    property_images {
-        uuid id PK
-        uuid property_id FK
-        varchar url
-        datetime created_at
-        datetime updated_at
-    }
-
-    amenities {
-        uuid id PK
-        varchar name "unique when active"
-        datetime created_at
-        datetime updated_at
-        bool is_deleted
-        datetime deleted_at
-    }
-
-    property_amenities {
-        uuid id PK
-        uuid property_id FK
-        uuid amenity_id FK
-        datetime created_at
-        datetime updated_at
-    }
-
-    bookings {
-        uuid id PK
-        uuid tenant_id FK
-        uuid property_id FK
-        uuid guest_id FK
-        uuid property_manager_id FK
-        enum status "PENDING/CONFIRMED/CANCELLED/COMPLETED/FAILED"
-        date check_in
-        date check_out
-        numeric base_amount "10,2"
-        numeric commission_amount "10,2"
-        numeric total_amount "10,2"
-        datetime cancelled_at
-        datetime expires_at
-        datetime created_at
-        datetime updated_at
-    }
-
-    payments {
-        uuid id PK
-        uuid tenant_id FK
-        uuid booking_id FK
-        uuid guest_id FK
-        enum status "PENDING/PAID/FAILED/REFUNDED"
-        numeric amount "10,2"
-        varchar currency "default INR"
-        varchar razorpay_order_id "unique"
-        varchar razorpay_payment_id
-        varchar razorpay_signature
-        datetime created_at
-        datetime updated_at
-    }
-
-    reviews {
-        uuid id PK
-        uuid tenant_id FK
-        uuid booking_id FK "unique"
-        uuid property_id FK
-        uuid guest_id FK
-        int rating "1-5"
-        text comment
-        datetime created_at
-        datetime updated_at
-    }
-
-    messages {
-        uuid id PK
-        uuid tenant_id FK
-        uuid booking_id FK
-        uuid sender_id FK "null for system messages"
-        text content
-        enum message_type "USER_MESSAGE/SYSTEM_MESSAGE/etc"
-        datetime created_at
-        datetime updated_at
-    }
-
-    webhooks {
-        uuid id PK
-        uuid tenant_id FK "nullable"
-        varchar event_type
-        json payload
-        varchar razorpay_event_id "unique"
-        bool processed
-        datetime created_at
-        datetime updated_at
-    }
-
-    blacklisted_tokens {
-        uuid id PK
-        uuid user_id FK
-        varchar jti "unique"
-        datetime expires_at
-        datetime created_at
-        datetime updated_at
-    }</code></pre>
 
 
 
