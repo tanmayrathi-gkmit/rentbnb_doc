@@ -1112,14 +1112,18 @@
 <h2 id="key-permission-principles">Key Permission Principles<a class="headerlink" href="#key-permission-principles" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Tenant Isolation</strong>: All operational data (properties, bookings, payments, reviews, messages) is strictly tenant-scoped</li>
-<li><strong>SUPER_ADMIN Limited Scope</strong>: SUPER_ADMIN has global access ONLY to:</li>
+<li><strong>SUPER_ADMIN Limited Scope</strong>: SUPER_ADMIN has global access ONLY to:<ul>
 <li><strong>Tenants</strong>: Full CRUD operations across all tenants</li>
 <li><strong>Users</strong>: View, create, update, delete users across all tenants</li>
 <li><strong>Amenities</strong>: Global amenity catalog management</li>
 <li><strong>Platform Dashboard</strong>: System-wide analytics and metrics</li>
-<li><strong>SUPER_ADMIN Restrictions</strong>: SUPER_ADMIN does NOT have access to:</li>
+</ul>
+</li>
+<li><strong>SUPER_ADMIN Restrictions</strong>: SUPER_ADMIN does NOT have access to:<ul>
 <li>Properties, Bookings, Payments, Reviews, or Messages (all tenant-scoped)</li>
 <li>These require tenant membership and appropriate role (TENANT_ADMIN, MANAGER, or GUEST)</li>
+</ul>
+</li>
 <li><strong>TENANT_ADMIN Privileges</strong>: Full control within their tenant, including user management and all operational features</li>
 <li><strong>MANAGER Privileges</strong>: Can manage properties, amenities, bookings, and payments within their tenant</li>
 <li><strong>GUEST Privileges</strong>: Can create bookings, make payments, and write reviews for completed bookings</li>
